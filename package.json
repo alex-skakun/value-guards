@@ -1,5 +1,5 @@
 {
-  "name": "npm-package-template",
+  "name": "value-guards",
   "version": "1.0.0",
   "sideEffects": false,
   "author": {
@@ -8,7 +8,7 @@
     "url": "https://github.com/alex-skakun"
   },
   "repository": {
-    "url": ""
+    "url": "https://github.com/alex-skakun/value-guards.git"
   },
   "license": "MIT",
   "keywords": [],
