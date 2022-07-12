@@ -1,4 +1,4 @@
-export function isEmptyInputValue(value: unknown): boolean {
+export function isEmptyInputValue(value: any): boolean {
   switch (typeof value) {
   case 'boolean':
     return false;

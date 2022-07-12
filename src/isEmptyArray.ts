@@ -1,3 +1,3 @@
-export function isEmptyArray<T>(value: Array<T>): value is [] {
-  return value.length === 0;
+export function isEmptyArray(value: any): value is [] {
+  return Array.isArray(value) && value.length === 0;
 }
