@@ -1,7 +1,7 @@
 import { getObjectTester } from './utils/getObjectTester';
 
 
-export function isNonEmptyRecord<K extends string | symbol, V>(
+export function isNonEmptyRecord<K extends keyof any, V>(
   value: any,
   testBy: 'keys' | 'ownProperties' = 'keys'
 ): value is Record<K, V> {

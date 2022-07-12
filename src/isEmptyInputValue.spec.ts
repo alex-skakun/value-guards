@@ -41,4 +41,12 @@ describe('isEmptyInputValue()', () => {
     expect(isEmptyInputValue([])).toBe(false);
   });
 
+  it('should return true for Invalid Date', () => {
+    expect(isEmptyInputValue(new Date('test'))).toBe(true);
+  });
+
+  it('should return false for valid Date', () => {
+    expect(isEmptyInputValue(new Date())).toBe(false);
+  });
+
 });
