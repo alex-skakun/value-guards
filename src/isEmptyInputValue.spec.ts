@@ -1,52 +1,50 @@
+import { describe, expect, test } from 'bun:test';
 import { isEmptyInputValue } from './isEmptyInputValue';
 
-
 describe('isEmptyInputValue()', () => {
-
-  it('should return false for any boolean', () => {
-    expect(isEmptyInputValue(true)).toBe(false);
-    expect(isEmptyInputValue(false)).toBe(false);
+  test('should return false for any boolean', () => {
+    expect(isEmptyInputValue(true)).toBeFalse();
+    expect(isEmptyInputValue(false)).toBeFalse();
   });
 
-  it('should return false for finite numbers', () => {
-    expect(isEmptyInputValue(0)).toBe(false);
-    expect(isEmptyInputValue(1)).toBe(false);
-    expect(isEmptyInputValue(-1)).toBe(false);
+  test('should return false for finite numbers', () => {
+    expect(isEmptyInputValue(0)).toBeFalse();
+    expect(isEmptyInputValue(1)).toBeFalse();
+    expect(isEmptyInputValue(-1)).toBeFalse();
   });
 
-  it('should return true for NaN', () => {
-    expect(isEmptyInputValue(NaN)).toBe(true);
+  test('should return true for NaN', () => {
+    expect(isEmptyInputValue(NaN)).toBeTrue();
   });
 
-  it('should return true for any Infinity', () => {
-    expect(isEmptyInputValue(Infinity)).toBe(true);
-    expect(isEmptyInputValue(-Infinity)).toBe(true);
+  test('should return true for any Infinity', () => {
+    expect(isEmptyInputValue(Infinity)).toBeTrue();
+    expect(isEmptyInputValue(-Infinity)).toBeTrue();
   });
 
-  it('should return true for empty string', () => {
-    expect(isEmptyInputValue('')).toBe(true);
+  test('should return true for empty string', () => {
+    expect(isEmptyInputValue('')).toBeTrue();
   });
 
-  it('should return false for non-empty string', () => {
-    expect(isEmptyInputValue('test')).toBe(false);
+  test('should return false for non-empty string', () => {
+    expect(isEmptyInputValue('test')).toBeFalse();
   });
 
-  it('should return true for undefined or null', () => {
-    expect(isEmptyInputValue(undefined)).toBe(true);
-    expect(isEmptyInputValue(null)).toBe(true);
+  test('should return true for undefined or null', () => {
+    expect(isEmptyInputValue(undefined)).toBeTrue();
+    expect(isEmptyInputValue(null)).toBeTrue();
   });
 
-  it('should return false for empty record or array', () => {
-    expect(isEmptyInputValue({})).toBe(false);
-    expect(isEmptyInputValue([])).toBe(false);
+  test('should return false for empty record or array', () => {
+    expect(isEmptyInputValue({})).toBeFalse();
+    expect(isEmptyInputValue([])).toBeFalse();
   });
 
-  it('should return true for Invalid Date', () => {
-    expect(isEmptyInputValue(new Date('test'))).toBe(true);
+  test('should return true for Invalid Date', () => {
+    expect(isEmptyInputValue(new Date('test'))).toBeTrue();
   });
 
-  it('should return false for valid Date', () => {
-    expect(isEmptyInputValue(new Date())).toBe(false);
+  test('should return false for valid Date', () => {
+    expect(isEmptyInputValue(new Date())).toBeFalse();
   });
-
 });

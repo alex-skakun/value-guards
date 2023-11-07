@@ -10,7 +10,6 @@ Confirms that passed value `T` is `NonNullable<T>`.
 ```typescript
 import { isDefined } from 'value-guards';
 
-
 type Point = null | {
   x: number;
   y: number;
@@ -32,12 +31,27 @@ Confirms that passed value is function.
 ```typescript
 import { isFunction } from 'value-guards';
 
-
 type Initial<T> = T | (() => T);
 
 function handle<T>(initialValue: Initial<T>): void {
   if (isFunction(initialValue)) {
     // initialValue is () => T
+  }
+}
+```
+
+## `isClass()`
+
+Confirms that passed value is constructable (newable).
+
+```typescript
+import { isClass } from 'value-guards';
+
+type Initial<T> = { new(): T } | (() => T);
+
+function handle<T>(initialValue: Initial<T>): void {
+  if (isClass(initialValue)) {
+    // initialValue may be safely used with new as constructor
   }
 }
 ```
@@ -48,7 +62,6 @@ Confirms that passed value is empty array.
 
 ```typescript
 import { isEmptyArray } from 'value-guards';
-
 
 function handle(values: number[]): void {
   if (isEmptyArray(values)) {
@@ -63,7 +76,6 @@ Confirms that passed value is array, and it's not empty.
 
 ```typescript
 import { isNonEmptyArray } from 'value-guards';
-
 
 function handle(values: [number?]): void {
   if (isNonEmptyArray(values)) {
@@ -83,7 +95,6 @@ There are two types of properties checking:
 ```typescript
 import { isEmptyRecord } from 'value-guards';
 
-
 isEmptyRecord({}); // true
 isEmptyRecord(Object.prototype); // true
 isEmptyRecord(Object.prototype, 'ownProperties'); // false
@@ -100,7 +111,6 @@ There are two types of properties checking:
 
 ```typescript
 import { isNonEmptyRecord } from 'value-guards';
-
 
 isNonEmptyRecord({}); // false
 isNonEmptyRecord(Object.prototype); // false

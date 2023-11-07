@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "module": "ESNext",
-    "target": "ES2017",
+    "target": "ES2020",
     "moduleResolution": "Node",
     "moduleDetection": "force",
     "allowSyntheticDefaultImports": true,
@@ -9,15 +9,28 @@
     "sourceMap": true,
     "declaration": false,
     "importHelpers": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "composite": true,
     "jsx": "react-jsx",
-    "strict": true
+    "strict": true,
+    "types": [
+      "bun-types"
+    ],
+    "lib": [
+      "ESNext"
+    ]
   },
+  "include": [
+    "./src"
+  ],
   "exclude": [
     "node_modules",
     "**/*.spec.tsx",
     "**/*.spec.ts"
   ],
-  "include": [
-    "src"
+  "references": [
+    {"path": "./tsconfig.build.json"},
+    {"path": "./tsconfig.spec.json"}
   ]
 }

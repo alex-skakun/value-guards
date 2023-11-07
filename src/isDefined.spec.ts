@@ -1,31 +1,29 @@
+import { describe, expect, test } from 'bun:test';
 import { isDefined } from './isDefined';
 
-
 describe('isDefined()', () => {
-
-  it('should return false for null', () => {
-    expect(isDefined(null)).toBe(false);
+  test('should return false for null', () => {
+    expect(isDefined(null)).toBeFalse();
   });
 
-  it('should return false for undefined', () => {
-    expect(isDefined(undefined)).toBe(false);
+  test('should return false for undefined', () => {
+    expect(isDefined(undefined)).toBeFalse();
   });
 
-  it('should return true for zero', () => {
-    expect(isDefined(0)).toBe(true);
+  test('should return true for zero', () => {
+    expect(isDefined(0)).toBeTrue();
   });
 
-  it('should return true for NaN', () => {
-    expect(isDefined(NaN)).toBe(true);
+  test('should return true for NaN', () => {
+    expect(isDefined(NaN)).toBeTrue();
   });
 
-  it('should return true for empty string', () => {
-    expect(isDefined('')).toBe(true);
+  test('should return true for empty string', () => {
+    expect(isDefined('')).toBeTrue();
   });
 
-  it('should return true for any boolean', () => {
-    expect(isDefined(true)).toBe(true);
-    expect(isDefined(false)).toBe(true);
+  test('should return true for any boolean', () => {
+    expect(isDefined(true)).toBeTrue();
+    expect(isDefined(false)).toBeTrue();
   });
-
 });

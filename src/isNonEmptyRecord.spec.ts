@@ -1,27 +1,27 @@
+import { describe, expect, test } from 'bun:test';
 import { isNonEmptyRecord } from './isNonEmptyRecord';
 
 describe('isNonEmptyRecord()', () => {
-
-  it('should return false for empty object', () => {
-    expect(isNonEmptyRecord({})).toBe(false);
+  test('should return false for empty object', () => {
+    expect(isNonEmptyRecord({})).toBeFalse();
   });
 
-  it('should return true for non-empty object', () => {
-    expect(isNonEmptyRecord({ testProperty: 'test' })).toBe(true);
+  test('should return true for non-empty object', () => {
+    expect(isNonEmptyRecord({ testProperty: 'test' })).toBeTrue();
   });
 
-  it('should return true for an object without prototype', () => {
+  test('should return true for an object without prototype', () => {
     const testObject = Object.create(null, {
       testProperty: {
         value: 'test',
         enumerable: true,
-      }
+      },
     });
 
-    expect(isNonEmptyRecord(testObject)).toBe(true);
+    expect(isNonEmptyRecord(testObject)).toBeTrue();
   });
 
-  it('should return false for an object with non-enumerable properties', () => {
+  test('should return false for an object with non-enumerable properties', () => {
     const testObject = Object.create(Object.prototype, {
       testProperty: {
         value: 'test',
@@ -29,10 +29,10 @@ describe('isNonEmptyRecord()', () => {
       },
     });
 
-    expect(isNonEmptyRecord(testObject)).toBe(false);
+    expect(isNonEmptyRecord(testObject)).toBeFalse();
   });
 
-  it('should return true for an object with non-enumerable properties using "ownProperties" tester', () => {
+  test('should return true for an object with non-enumerable properties using "ownProperties" tester', () => {
     const testObject = Object.create(Object.prototype, {
       testProperty: {
         value: 'test',
@@ -40,19 +40,18 @@ describe('isNonEmptyRecord()', () => {
       },
     });
 
-    expect(isNonEmptyRecord(testObject, 'ownProperties')).toBe(true);
+    expect(isNonEmptyRecord(testObject, 'ownProperties')).toBeTrue();
   });
 
-  it('should return false for null or undefined', () => {
-    expect(isNonEmptyRecord(null)).toBe(false);
-    expect(isNonEmptyRecord(undefined)).toBe(false);
+  test('should return false for null or undefined', () => {
+    expect(isNonEmptyRecord(null)).toBeFalse();
+    expect(isNonEmptyRecord(undefined)).toBeFalse();
   });
 
-  it('should return false for function with properties', () => {
+  test('should return false for function with properties', () => {
     const test = () => {};
     test.testProperty = 'test';
 
-    expect(isNonEmptyRecord(test)).toBe(false);
+    expect(isNonEmptyRecord(test)).toBeFalse();
   });
-
 });

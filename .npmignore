@@ -4,6 +4,7 @@
 tsconfig.json
 tsconfig.*.json
 package-lock.json
+bun.lockb
 jest.config.js
 webpack.config.js
 src

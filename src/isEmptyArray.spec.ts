@@ -1,19 +1,17 @@
+import { describe, expect, test } from 'bun:test';
 import { isEmptyArray } from './isEmptyArray';
 
-
 describe('isEmptyArray()', () => {
-
-  it('should return true for empty array', () => {
-    expect(isEmptyArray([])).toBe(true);
+  test('should return true for empty array', () => {
+    expect(isEmptyArray([])).toBeTrue();
   });
 
-  it('should return false for non-empty array', () => {
-    expect(isEmptyArray([1])).toBe(false);
+  test('should return false for non-empty array', () => {
+    expect(isEmptyArray([1])).toBeFalse();
   });
 
-  it('should return false for array-like object', () => {
-    expect(isEmptyArray({ length: 1 })).toBe(false);
-    expect(isEmptyArray({ length: 0 })).toBe(false);
+  test('should return false for array-like object', () => {
+    expect(isEmptyArray({ length: 1 })).toBeFalse();
+    expect(isEmptyArray({ length: 0 })).toBeFalse();
   });
-
 });
