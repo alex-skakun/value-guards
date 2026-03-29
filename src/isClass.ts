@@ -1,8 +1,6 @@
-interface ClassType<T extends object> {
-  new(...args: any[]): T;
-}
+import { Class } from 'type-fest';
 
-export function isClass<Instance extends object, T extends ClassType<Instance>>(value: T | any): value is T {
+export function isClass<Instance extends object, T extends Class<Instance>>(value: T | unknown): value is T {
   return typeof value === 'function'
     && /^(class|function) /.test(value.toString())
     && !Object.getOwnPropertyDescriptor(value, 'prototype')?.writable;

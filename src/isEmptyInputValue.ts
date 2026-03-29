@@ -1,4 +1,4 @@
-export function isEmptyInputValue(value: any): boolean {
+export function isEmptyInputValue(value: unknown): boolean {
   if (value instanceof Date) {
     return Number.isNaN(value.getTime());
   }
