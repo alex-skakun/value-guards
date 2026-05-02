@@ -1,8 +1,39 @@
-# value-guards
+value-guards
+============
 
 Small set of functions for value validation and type guarding.
 
-## `isPresent()`
+
+## TOC
+
+  * [Type guards](#type-guards)
+    * [isPresent()](#ispresent)
+    * [isNonPresent()](#isnonpresent)
+    * [isFunction()](#isfunction)
+    * [isClass()](#isclass)
+    * [isEmptyArray()](#isemptyarray)
+    * [isNonEmptyArray()](#isnonemptyarray)
+    * [isEmptyRecord()](#isemptyrecord)
+    * [isNonEmptyRecord()](#isnonemptyrecord)
+    * [mapHas()](#maphas)
+    * [setHas()](#sethas)
+    * [isEmptyInputValue()](#isemptyinputvalue)
+  * [Number utilities](#number-utilities)
+    * [isFiniteNumber()](#isfinitenumber) 
+    * [isSafeNumber()](#issafenumber) 
+    * [isSafeInteger()](#issafeinteger) 
+    * [isPositiveSafeInteger()](#ispositivesafeinteger) 
+    * [isNonNegativeSafeInteger()](#isnonnegativesafeinteger)
+  * [Exported types](#exported-types)
+    * [type-fest package](#type-fest-package)
+    * [NonPresent](#nonpresent)
+    * [Nullish<T>](#nullisht)
+
+
+## Type guards
+
+
+### `isPresent()`
 
 > Previously called `isDefined()` and still accessible by this name, but it is deprecated.
 > Will be removed in next major version.
@@ -27,11 +58,13 @@ function handlePoint(point: Point): void {
 }
 ```
 
-## `isNonPresent()`
+
+### `isNonPresent()`
 
 Works opposite to `isPresent()`. Returns `true` when passed value is `null` or `undefined`.
 
-## `isFunction()`
+
+### `isFunction()`
 
 Confirms that passed value is function and is not class.
 
@@ -47,7 +80,8 @@ function handle<T>(initialValue: Initial<T>): void {
 }
 ```
 
-## `isClass()`
+
+### `isClass()`
 
 Confirms that passed value is constructable (can be used with operator `new`).
 
@@ -63,7 +97,8 @@ function handle<T>(initialValue: Initial<T>): void {
 }
 ```
 
-## `isEmptyArray()`
+
+### `isEmptyArray()`
 
 Confirms that passed value is empty array.
 
@@ -77,7 +112,8 @@ function handle(values: number[]): void {
 }
 ```
 
-## `isNonEmptyArray()`
+
+### `isNonEmptyArray()`
 
 Confirms that passed value is array, and it's not empty.
 
@@ -92,7 +128,8 @@ function handle(values: [number?]): void {
 }
 ```
 
-## `isEmptyRecord()`
+
+### `isEmptyRecord()`
 
 Returns `true` when passed object is empty. 
 There are two types of properties checking:
@@ -109,7 +146,8 @@ isEmptyRecord(null); // false
 isEmptyRecord(undefined); // false
 ```
 
-## `isNonEmptyRecord()`
+
+### `isNonEmptyRecord()`
 
 Returns `true` is passed object contains properties. 
 There are two types of properties checking:
@@ -126,40 +164,8 @@ isNonEmptyRecord(null); // false
 isNonEmptyRecord(undefined); // false
 ```
 
-## `isEmptyInputValue()`
 
-Returns `true` for "empty" values.
-
-- `boolean` is always not empty;
-- `number` is empty when it is `NaN` or `Infinity`;
-- `string` empty when it is `''` (empty string);
-- `Date` empty when it is `Invalid Date`;
-- for other types is uses `!`.
-
-## Number utilities
-
-### `isFiniteNumber()`
-
-The same as standard `Number.isFinite()` but confirms that passed value is `number`.
-
-### `isSafeNumber()`
-
-Checks that passed value is finite and fits in bounds of `-Number.MAX_VALUE` and `+Number.MAX_VALUE`.
-Confirms that passed value is `number`.
-
-### `isSafeInteger()`
-
-Checks that passed value is safe integer. Confirms that passed value is `number`.
-
-### `isPositiveSafeInteger()`
-
-Checks that passed value is safe integer and strictly grater than zero. Confirms that passed value is `number`.
-
-### `isNonNegativeSafeInteger()`
-
-Checks that passed value is safe integer and grater or equal zero. Confirms that passed value is `number`.
-
-## `mapHas()`
+### `mapHas()`
 
 Confirms that passed Map has passed key. It means that next interactions with passed key will work as value really exists in Set.
 
@@ -175,9 +181,10 @@ if (mapHas(map, 'a')) {
 }
 ```
 
-## `setHas()`
 
-Confirms that passed Set has passed key. It means that next interactions with passed key will work as value really exists in Set. 
+### `setHas()`
+
+Confirms that passed Set has passed key. It means that next interactions with passed key will work as value really exists in Set.
 
 ```typescript
 import { setHas } from 'value-guards';
@@ -190,15 +197,63 @@ if (setHas(set, 'a')) {
 }
 ```
 
+
+### `isEmptyInputValue()`
+
+Returns `true` for "empty" values.
+
+- `boolean` is always not empty;
+- `number` is empty when it is `NaN` or `Infinity`;
+- `string` empty when it is `''` (empty string);
+- `Date` empty when it is `Invalid Date`;
+- for other types is uses `!`.
+
+
+## Number utilities
+
+
+### `isFiniteNumber()`
+
+The same as standard `Number.isFinite()` but confirms that passed value is `number`.
+
+
+### `isSafeNumber()`
+
+Checks that passed value is finite and fits in bounds of `-Number.MAX_VALUE` and `+Number.MAX_VALUE`.
+Confirms that passed value is `number`.
+
+
+### `isSafeInteger()`
+
+Checks that passed value is safe integer. Confirms that passed value is `number`.
+
+
+### `isPositiveSafeInteger()`
+
+Checks that passed value is safe integer and strictly grater than zero. Confirms that passed value is `number`.
+
+
+### `isNonNegativeSafeInteger()`
+
+Checks that passed value is safe integer and grater or equal zero. Confirms that passed value is `number`.
+
+
 ## Exported types
+
+
+### `type-fest` package
 
 Completely reexports `type-fest` library.
 
-### Own Types
+### `NonPresent`
 
-- `NonPresent` - equals to `null | undefined`;
-- `Nullish<T>` - equals to `T | null | undefined`;
+Equals to `null | undefined`
 
-# License
+
+### `Nullish<T>`
+
+Equals to `T | null | undefined`;
+
+## License
 
 MIT
