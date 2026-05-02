@@ -8,7 +8,7 @@
     "url": "https://github.com/alex-skakun"
   },
   "repository": {
-    "url": "https://github.com/alex-skakun/value-guards.git"
+    "url": "git+https://github.com/alex-skakun/value-guards.git"
   },
   "license": "MIT",
   "keywords": [
